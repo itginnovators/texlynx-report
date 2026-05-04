@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/proxy-image/(.*)",
+      "destination": "https://userprofile.scmcloud.online/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
