@@ -6,8 +6,8 @@ import texlynxLogo from "../assets/texlynx-logo.jpeg";
 // ── PAGE HEADER ──────────────────────────────────────────────
 export const PageHeader = ({ result }) => {
   // result: 1 = TQMS only, 2 = logo only, 3 or null = both
-  const showTQMS = result == null || result === 1 || result === 3;
-  const showLogo = result == null || result === 2 || result === 3;
+   const showTQMS = result == null || result === 2 || result === 3;
+  const showLogo = result == null || result === 1 || result === 3;
   return (
     <View style={styles.headerTable} fixed>
       <View style={styles.headerCol1}>
