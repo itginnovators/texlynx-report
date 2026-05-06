@@ -194,10 +194,10 @@ const styles = StyleSheet.create({
   },
   qtyCellLast: { paddingHorizontal: 4, paddingVertical: 4, justifyContent: "center", fontSize: 9 },
   qtyHeaderCell: {
-    paddingHorizontal: 4, paddingVertical: 4, fontFamily: "Helvetica-Bold",
-    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 9,
+    paddingHorizontal: 2, paddingVertical: 4, fontFamily: "Helvetica-Bold",
+    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 7.5, textAlign: "center",
   },
-  qtyHeaderCellLast: { paddingHorizontal: 4, paddingVertical: 4, fontFamily: "Helvetica-Bold", fontSize: 9 },
+  qtyHeaderCellLast: { paddingHorizontal: 2, paddingVertical: 4, fontFamily: "Helvetica-Bold", fontSize: 7.5, textAlign: "center" },
   totalSampleRow: { flexDirection: "row", justifyContent: "flex-end", marginTop: 5, marginBottom: 8 },
   totalSampleText: { fontFamily: "Helvetica-Bold", fontSize: 10 },
 
@@ -215,12 +215,12 @@ const styles = StyleSheet.create({
   },
   aqlCellLast: { paddingHorizontal: 4, paddingVertical: 4, justifyContent: "center", fontSize: 9 },
   aqlHeaderCell: {
-    paddingHorizontal: 4, paddingVertical: 4, fontFamily: "Helvetica-Bold",
-    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 9, textAlign: "center",
+    paddingHorizontal: 2, paddingVertical: 4, fontFamily: "Helvetica-Bold",
+    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 7.5, textAlign: "center",
   },
   aqlHeaderCellLast: {
-    paddingHorizontal: 4, paddingVertical: 4, fontFamily: "Helvetica-Bold",
-    fontSize: 9, textAlign: "center",
+    paddingHorizontal: 2, paddingVertical: 4, fontFamily: "Helvetica-Bold",
+    fontSize: 7.5, textAlign: "center",
   },
 
   // ── WORKMANSHIP CONTROL RECORD ──
