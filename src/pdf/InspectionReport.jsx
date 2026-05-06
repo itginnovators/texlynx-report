@@ -6,7 +6,7 @@ import {
   InfoTable, ProductCategoryTable, InspectionConclusion, ChecklistTable
 } from "./components";
 
-const INSPECTION_TYPES = { 1: "FRI", 2: "DPI", 3: "PSI" };
+const INSPECTION_TYPES = { 1: "PSI", 2: "In Line", 3: "Final", 4: "Re Final" };
 
 const PROD_CATS_LABEL = ["Apparel", "Soft Home", "Hard Goods", "Accessories", "Others"];
 
@@ -40,7 +40,7 @@ const QTY_COLS = [
   { key: "TotalCartons", label: "Total Cartons", w: "7%" },
   { key: "PscWeight", label: "Pc/Set Weight", w: "6%" },
   { key: "CartonWeight", label: "Carton Weight", w: "6%" },
-  { key: "SelectedCartons", label: "Sel. Cartons", w: "6%" },
+  { key: "SelectedCartons", label: "Selected Cartons", w: "6%" },
   { key: "SampleSize", label: "Sample Size", w: "6%" },
 ];
 
@@ -90,16 +90,16 @@ const Page2 = ({ data, result }) => {
 
 // ── PAGE 3: Workmanship AQL ───────────────────────────────────
 const AQL_COLS = [
-  { key: "desc", label: "Description", w: "16%" },
+  { key: "desc", label: "Description", w: "20%" },
   { key: "Size", label: "Size", w: "8%" },
   { key: "SampleSize", label: "Sample Size", w: "7%" },
-  { key: "critAllowed", label: "Critical Defective Allowed", w: "8%" },
-  { key: "MajorAllowed", label: "Major Defective Allowed", w: "8%" },
-  { key: "MinorAllowed", label: "Minor Defective Allowed", w: "8%" },
-  { key: "CriticalTotal", label: "Critical Defective Found", w: "8%" },
-  { key: "MajorTotal", label: "Major Defective Found", w: "8%" },
-  { key: "MinorTotal", label: "Minor Defective Found", w: "8%" },
-  { key: "Result", label: "Result", w: "8%" },
+  { key: "critAllowed", label: "Critical Defective Allowed", w: "9%" },
+  { key: "MajorAllowed", label: "Major Defective Allowed", w: "9%" },
+  { key: "MinorAllowed", label: "Minor Defective Allowed", w: "9%" },
+  { key: "CriticalTotal", label: "Critical Defective Found", w: "9%" },
+  { key: "MajorTotal", label: "Major Defective Found", w: "9%" },
+  { key: "MinorTotal", label: "Minor Defective Found", w: "9%" },
+  { key: "Result", label: "Result", w: "9%" },
 ];
 
 const Page3 = ({ data, result }) => {
@@ -128,17 +128,17 @@ const Page3 = ({ data, result }) => {
           const isPass = row.Result === 1;
           return (
             <View key={ri} wrap={false} style={[styles.aqlDataRow, ri === rows.length - 1 && styles.aqlDataRowLast]}>
-              <Text style={[styles.aqlCell, { width: "16%" }]}>{row.Product || row.Color || "—"}</Text>
+              <Text style={[styles.aqlCell, { width: "20%" }]}>{row.Product || row.Color || "—"}</Text>
               <Text style={[styles.aqlCell, { width: "8%" }]}>{row.Size || "—"}</Text>
               <Text style={[styles.aqlCell, { width: "7%", textAlign: "center" }]}>{row.SampleSize}</Text>
-              <Text style={[styles.aqlCell, { width: "8%", textAlign: "center" }]}>{row.CriticalAllowed ?? 0}</Text>
-              <Text style={[styles.aqlCell, { width: "8%", textAlign: "center" }]}>{row.MajorAllowed}</Text>
-              <Text style={[styles.aqlCell, { width: "8%", textAlign: "center" }]}>{row.MinorAllowed}</Text>
-              <Text style={[styles.aqlCell, { width: "8%", textAlign: "center" }]}>{row.CriticalTotal}</Text>
-              <Text style={[styles.aqlCell, { width: "8%", textAlign: "center" }]}>{row.MajorTotal}</Text>
-              <Text style={[styles.aqlCell, { width: "8%", textAlign: "center" }]}>{row.MinorTotal}</Text>
+              <Text style={[styles.aqlCell, { width: "9%", textAlign: "center" }]}>{row.CriticalAllowed ?? 0}</Text>
+              <Text style={[styles.aqlCell, { width: "9%", textAlign: "center" }]}>{row.MajorAllowed}</Text>
+              <Text style={[styles.aqlCell, { width: "9%", textAlign: "center" }]}>{row.MinorAllowed}</Text>
+              <Text style={[styles.aqlCell, { width: "9%", textAlign: "center" }]}>{row.CriticalTotal}</Text>
+              <Text style={[styles.aqlCell, { width: "9%", textAlign: "center" }]}>{row.MajorTotal}</Text>
+              <Text style={[styles.aqlCell, { width: "9%", textAlign: "center" }]}>{row.MinorTotal}</Text>
               <Text style={[styles.aqlCellLast, {
-                width: "8%", textAlign: "center",
+                width: "9%", textAlign: "center",
                 color: isPass ? GREEN : RED, fontFamily: "Helvetica-Bold"
               }]}>{isPass ? "PASS" : "FAIL"}</Text>
             </View>
@@ -236,18 +236,34 @@ const Page4 = ({ data, result }) => {
               {/* ── 12 data rows — flex:1 each so they fill remaining space ── */}
               {errors.map((err, ei) => (
                 <View key={ei} style={[{ flexDirection: "row", flex: 1 }, bB]}>
-                  <Text style={[{ width: "7%" }, pad, f9, bR, ctr, { color: BLUE, fontFamily: "Helvetica-Bold" }]}>{err.n}</Text>
-                  <Text style={[{ width: "38%" }, pad, f9, bR, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold" }]}>{err.desc}</Text>
+                  {/* Error # */}
+                  <View style={[{ width: "7%", justifyContent: "center", alignItems: "center" }, bR]}>
+                    <Text style={[f9, { color: BLUE, fontFamily: "Helvetica-Bold", textAlign: "center" }]}>{err.n}</Text>
+                  </View>
+                  {/* Error description */}
+                  <View style={[{ width: "38%", justifyContent: "center", paddingHorizontal: 5, paddingVertical: 3 }, bR]}>
+                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold" }]}>{err.desc}</Text>
+                  </View>
+                  {/* Empty defect category spacer */}
                   <View style={[{ width: "14%" }, bR]} />
-                  <Text style={[{ flex: 1 }, pad, f9, bR, ctr, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold" }]}>
-                    {err.hasData ? err.critical : ""}
-                  </Text>
-                  <Text style={[{ flex: 1 }, pad, f9, bR, ctr, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold" }]}>
-                    {err.hasData ? err.major : ""}
-                  </Text>
-                  <Text style={[{ flex: 1 }, pad, f9, ctr, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold" }]}>
-                    {err.hasData ? err.minor : ""}
-                  </Text>
+                  {/* Critical */}
+                  <View style={[{ flex: 1, justifyContent: "center", alignItems: "center" }, bR]}>
+                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold", textAlign: "center" }]}>
+                      {err.hasData ? err.critical : ""}
+                    </Text>
+                  </View>
+                  {/* Major */}
+                  <View style={[{ flex: 1, justifyContent: "center", alignItems: "center" }, bR]}>
+                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold", textAlign: "center" }]}>
+                      {err.hasData ? err.major : ""}
+                    </Text>
+                  </View>
+                  {/* Minor */}
+                  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold", textAlign: "center" }]}>
+                      {err.hasData ? err.minor : ""}
+                    </Text>
+                  </View>
                 </View>
               ))}
 
@@ -393,7 +409,7 @@ const Page5 = ({ data, result }) => {
       <Text style={{ fontFamily: "Helvetica-Bold", fontSize: 9, marginBottom: 4, marginTop: 6, borderWidth: 0.5, borderColor: BLACK, padding: 5, }}>Carton Dimension and Weight Check</Text>
       <View style={styles.simpleTable} wrap={false}>
         <View style={styles.simpleHeaderRow}>
-          {["Article", "SKU", "UPC/Barcode", "Carton Dim (Specs)", "Observed Carton Dim", "Packed Product Dim", "Carton PLY", "Retail Price", "Retailer"].map((h, i, arr) => (
+          {["Article", "SKU", "UPC/Barcode", "Carton\nDimension\n(Specs)", "Observed\nCarton\nDimension", "Packed Product\nDimension", "Carton PLY", "Retail Price", "Retailer"].map((h, i, arr) => (
             <Text key={i} style={i === arr.length - 1 ? styles.simpleHeaderCellLast : styles.simpleHeaderCell}>{h}</Text>
           ))}
         </View>
@@ -435,7 +451,7 @@ const Page6 = ({ data, result }) => {
             src={measPhoto.photoUrl}
             style={{ maxWidth: "100%", maxHeight: 360, objectFit: "contain" }}
           />
-          <Text style={{ fontSize: 8, color: BLUE, marginTop: 4, fontFamily: "Helvetica-Bold" }}>{measPhoto.PhotoName}</Text>
+          <Text style={{ fontSize: 8, color: BLUE, marginTop: 4, fontFamily: "Helvetica-Bold" }}>Measurements Sheet</Text>
         </View>
       )}
     </Page>
@@ -475,23 +491,27 @@ const Page7 = ({ data, result }) => {
         if (rowPhotos.length === 0) return null;
         return (
           <View key={row} style={{ flexDirection: "row", marginBottom: 8 }}>
-            {rowPhotos.map((photo, ci) => (
-              <View key={ci} style={{
-                flex: 1,
-                marginHorizontal: 3,
-                borderWidth: 0.5,
-                borderColor: BLACK,
-                alignItems: "center",
-              }}>
-                <Image
-                  src={photo.photoUrl}
-                  style={{ width: "100%", height: 165, objectFit: "cover" }}
-                />
-                <Text style={{ fontSize: 7.5, color: BLUE, paddingVertical: 3, textAlign: "center", fontFamily: "Helvetica-Bold" }}>
-                  {photo.PhotoName}
-                </Text>
-              </View>
-            ))}
+            {rowPhotos.map((photo, ci) => {
+              // Global picture index across all pages
+              const globalIndex = pi * OBS_PER_PAGE + row * OBS_PER_ROW + ci + 1;
+              return (
+                <View key={ci} style={{
+                  flex: 1,
+                  marginHorizontal: 3,
+                  borderWidth: 0.5,
+                  borderColor: BLACK,
+                  alignItems: "center",
+                }}>
+                  <Image
+                    src={photo.photoUrl}
+                    style={{ width: "100%", height: 165, objectFit: "cover" }}
+                  />
+                  <Text style={{ fontSize: 7.5, color: BLUE, paddingVertical: 3, textAlign: "center", fontFamily: "Helvetica-Bold" }}>
+                    {`Picture ${globalIndex}`}
+                  </Text>
+                </View>
+              );
+            })}
             {/* Fill empty slots */}
             {Array.from({ length: OBS_PER_ROW - rowPhotos.length }).map((_, ei) => (
               <View key={`e${ei}`} style={{ flex: 1, marginHorizontal: 3 }} />
