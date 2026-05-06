@@ -97,7 +97,7 @@ export const InfoTable = ({ general, inspType }) => (
       <View style={styles.infoValueLast}><Text>{general?.InspectorArrivalTime}</Text></View>
     </View>
     <View style={[styles.infoRow, styles.infoRowLast]}>
-      <View style={styles.infoLabel}><Text>Inspector Name</Text></View>
+      <View style={styles.infoLabel}><Text>Inspector's Name</Text></View>
       <View style={styles.infoValue}><Text>{general?.InspectorName}</Text></View>
       <View style={styles.infoLabel}><Text>Inspector's Departure Time</Text></View>
       <View style={styles.infoValueLast}><Text>{general?.InspectorDepartureTime}</Text></View>
