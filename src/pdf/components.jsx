@@ -145,7 +145,7 @@ export const InspectionConclusion = ({ result }) => (
       <Text style={styles.notConfirmText}> Not Confirm</Text>
     </View>
     <View style={styles.conclusionItem}>
-      <CB checked={result === 3} />
+      <CB checked={result === 0} />
       <Text style={styles.pendingText}> Pending</Text>
     </View>
   </View>
