@@ -610,7 +610,7 @@ const PhotoPage = ({ title, photos, result }) => {
                   src={photo.photoUrl}
                   style={{ width: "100%", height: 160, objectFit: "cover" }}
                 />
-                <Text style={{ fontSize: 7.5, color: BLUE, paddingVertical: 3, textAlign: "center", fontFamily: 'Helvetica-Bold' }}>
+                 <Text style={{ fontSize: 7.5, color: photo.PhotoType === "Defect" ? RED : BLUE, paddingVertical: 3, textAlign: "center", fontFamily: 'Helvetica-Bold' }}>
                   {photo.PhotoName}
                 </Text>
               </View>
@@ -628,11 +628,12 @@ const PhotoPage = ({ title, photos, result }) => {
 
 // Photo type order (Defect first, then specific types, then OTHERS; KEY OBSERVATION excluded)
 const PHOTO_ORDER = [
-  "Defect",
+ 
   "SHADE COMPARISON",
   "METAL DETECTION TEST",
   "GENERAL PRESENTATION",
   "OTHERS",
+   "Defect",
 ];
 
 // ── MAIN DOCUMENT ─────────────────────────────────────────────
