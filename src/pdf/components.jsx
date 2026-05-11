@@ -6,7 +6,7 @@ import texlynxLogo from "../assets/texlynx-logo.jpeg";
 // ── PAGE HEADER ──────────────────────────────────────────────
 export const PageHeader = ({ result }) => {
   // result: 1 = TQMS only, 2 = logo only, 3 or null = both
-   const showTQMS = result == null || result === 2 || result === 3;
+  const showTQMS = result == null || result === 2 || result === 3;
   const showLogo = result == null || result === 1 || result === 3;
   return (
     <View style={styles.headerTable} fixed>
@@ -63,7 +63,14 @@ export const CB = ({ checked, size = 9 }) => (
   </View>
 );
 
-
+export function fDate(date) {
+  if (!date) return '';
+  const d = new Date(date);
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const yy = String(d.getFullYear()).slice(-2);
+  return `${dd}/${mm}/${yy}`;
+}
 
 // ── GENERAL INFO TABLE ────────────────────────────────────────
 export const InfoTable = ({ general, inspType }) => (
@@ -82,7 +89,7 @@ export const InfoTable = ({ general, inspType }) => (
       <View style={styles.infoLabel}><Text>Inspection Type Performed</Text></View>
       <View style={styles.infoValue}><Text>{inspType}</Text></View>
       <View style={styles.infoLabel}><Text>Inspection Date</Text></View>
-      <View style={styles.infoValueLast}><Text>{general?.InspectionDate}</Text></View>
+      <View style={styles.infoValueLast}><Text>{fDate(general?.InspectionDate)}</Text></View>
     </View>
     <View style={styles.infoRow}>
       <View style={styles.infoLabel}><Text>Manufacturer Name</Text></View>
