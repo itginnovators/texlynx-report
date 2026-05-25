@@ -93,12 +93,12 @@ const AQL_COLS = [
   { key: "desc", label: "Description", w: "20%" },
   { key: "Size", label: "Size", w: "8%" },
   { key: "SampleSize", label: "Sample Size", w: "7%" },
-  { key: "critAllowed", label: "Critical Defect Allowed", w: "9%" },
-  { key: "MajorAllowed", label: "Major Defect Allowed", w: "9%" },
-  { key: "MinorAllowed", label: "Minor Defect Allowed", w: "9%" },
-  { key: "CriticalTotal", label: "Critical Defect Found", w: "9%" },
-  { key: "MajorTotal", label: "Major Defect Found", w: "9%" },
-  { key: "MinorTotal", label: "Minor Defect Found", w: "9%" },
+  { key: "critAllowed", label: "Critical Defect\nAllowed", w: "9%" },
+  { key: "MajorAllowed", label: "Major Defect\nAllowed", w: "9%" },
+  { key: "MinorAllowed", label: "Minor Defect\nAllowed", w: "9%" },
+  { key: "CriticalTotal", label: "Critical Defect\nFound", w: "9%" },
+  { key: "MajorTotal", label: "Major Defect\nFound", w: "9%" },
+  { key: "MinorTotal", label: "Minor Defect\nFound", w: "9%" },
   { key: "Result", label: "Result", w: "9%" },
 ];
 
