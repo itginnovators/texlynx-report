@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
   clDataRow: { flexDirection: "row", borderBottomWidth: 0.5, borderBottomColor: BLACK, flex: 1 },
   clDataRowLast: { borderBottomWidth: 0.5 },
   // Each group is 25% of table; NO outer group border — last cell per group carries the right border
-  clGroupCol: { width: "25%", flexDirection: "row" },
-  clGroupColLast: { width: "25%", flexDirection: "row" },
+   clGroupCol: { width: "25%", flexDirection: "row", borderRightWidth: 1, borderRightColor: BLACK, borderLeftWidth: 1, borderLeftColor: BLACK },
+  clGroupColLast: { width: "25%", flexDirection: "row", borderRightWidth: 1, borderRightColor: "white" },
   clPointCell: {
     width: "40%", paddingHorizontal: 3, paddingVertical: 3,
     borderRightWidth: 0.5, borderRightColor: BLACK, justifyContent: "center",
