@@ -78,15 +78,15 @@ const styles = StyleSheet.create({
   infoValue: {
     width: "28%", paddingHorizontal: 4, paddingVertical: 3,
     borderRightWidth: 0.5, borderRightColor: BLACK,
-    color: BLUE, justifyContent: "center", fontFamily: "Helvetica-Bold"
+    color: BLUE, justifyContent: "center",
   },
   infoValueFull: {
     width: "78%", paddingHorizontal: 4, paddingVertical: 3,
-    color: BLUE, justifyContent: "center", fontFamily: "Helvetica-Bold"
+    color: BLUE, justifyContent: "center",
   },
   infoValueLast: {
     width: "28%", paddingHorizontal: 4, paddingVertical: 3,
-    color: BLUE, justifyContent: "center", fontFamily: "Helvetica-Bold"
+    color: BLUE, justifyContent: "center",
   },
 
   // ── PRODUCT CATEGORY ──
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   catValueFull: {
     width: "78%", paddingHorizontal: 4, paddingVertical: 3,
-    color: BLUE, justifyContent: "center", fontFamily: "Helvetica-Bold"
+    color: BLUE, justifyContent: "center",
   },
   cbLabel: { fontSize: 8.5, marginLeft: 3, fontFamily: "Helvetica-Bold" },
 
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   clDataRow: { flexDirection: "row", borderBottomWidth: 0.5, borderBottomColor: BLACK, flex: 1 },
   clDataRowLast: { borderBottomWidth: 0.5 },
   // Each group is 25% of table; NO outer group border — last cell per group carries the right border
-   clGroupCol: { width: "25%", flexDirection: "row", borderRightWidth: 1, borderRightColor: BLACK, borderLeftWidth: 1, borderLeftColor: BLACK },
+  clGroupCol: { width: "25%", flexDirection: "row", borderRightWidth: 1, borderRightColor: BLACK, borderLeftWidth: 1, borderLeftColor: BLACK },
   clGroupColLast: { width: "25%", flexDirection: "row", borderRightWidth: 1, borderRightColor: "white" },
   clPointCell: {
     width: "40%", paddingHorizontal: 3, paddingVertical: 3,
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
     fontSize: 7.5,
     color: BLUE,
     justifyContent: "center",
-    fontFamily: "Helvetica-Bold"
+
   },
   wcrDefectCatCell: {
     flex: 1,
@@ -398,7 +398,7 @@ const styles = StyleSheet.create({
   packOptionText: { fontSize: 8, marginLeft: 5 },
   packDescBox: {
     borderWidth: 0.5, borderColor: BLACK, minHeight: 40,
-    paddingHorizontal: 5, paddingVertical: 4, marginBottom: 8, color: BLUE, fontSize: 8, fontFamily: "Helvetica-Bold"
+    paddingHorizontal: 5, paddingVertical: 4, marginBottom: 8, color: BLUE, fontSize: 8,
   },
   simpleTable: { borderWidth: 0.5, borderColor: BLACK, marginBottom: 8 },
   simpleHeaderRow: {
@@ -446,7 +446,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5, paddingVertical: 4, marginBottom: 8,
   },
   obsTitle: { fontFamily: "Helvetica-Bold", fontSize: 9, marginBottom: 4, borderWidth: 0.5, borderColor: BLACK, paddingVertical: 3, textAlign: "center", backgroundColor: ORANGE, },
-  obsText: { fontSize: 8.5, color: BLUE, fontFamily: "Helvetica-Bold" },
+  obsText: { fontSize: 8.5, color: BLUE, },
   conformTable: { borderWidth: 0.5, borderColor: BLACK, marginBottom: 8 },
   conformHeaderRow: {
     flexDirection: "row", backgroundColor: LIGHT_GRAY,
@@ -470,7 +470,7 @@ const styles = StyleSheet.create({
   },
   conformRemarksCell: {
     width: "23%", paddingHorizontal: 5, paddingVertical: 5,
-    fontSize: 9, color: BLUE, justifyContent: "center", fontFamily: "Helvetica-Bold"
+    fontSize: 9, color: BLUE, justifyContent: "center",
   },
   conformHeaderCell: {
     width: "11%", paddingHorizontal: 4, paddingVertical: 4,
