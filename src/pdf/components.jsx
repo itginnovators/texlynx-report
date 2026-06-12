@@ -145,11 +145,11 @@ export const InspectionConclusion = ({ result }) => (
     <Text style={styles.conclusionTitle}>Inspection Conclusion:</Text>
     <View style={styles.conclusionItem}>
       <CB checked={result === 1} />
-      <Text style={styles.confirmText}> Confirm</Text>
+      <Text style={styles.confirmText}> Conform</Text>
     </View>
     <View style={styles.conclusionItem}>
       <CB checked={result === 2} />
-      <Text style={styles.notConfirmText}> Not Confirm</Text>
+      <Text style={styles.notConfirmText}> Not Conform</Text>
     </View>
     <View style={styles.conclusionItem}>
       <CB checked={result === 0} />
@@ -170,10 +170,10 @@ export const ChecklistTable = ({ checklist, checklistRemarks }) => {
       {/* Header — no group-level border; last cell per group carries the right border */}
       <View style={styles.clHeaderRow}>
         {[0, 1, 2, 3].map(g => (
-          <View key={g} style={styles.clGroupCol}>
+          <View key={g} style={[styles.clGroupCol]}>
             <Text style={styles.clHeaderPoint}>Check Points</Text>
-            <Text style={styles.clHeaderCheck}>Confirm</Text>
-            <Text style={styles.clHeaderCheck}>Not{"\n"}Confirm</Text>
+            <Text style={styles.clHeaderCheck}>Conform</Text>
+            <Text style={styles.clHeaderCheck}>Not{"\n"}Conform</Text>
             <Text style={styles.clHeaderCheck}>Pending</Text>
             {/* N/A: border-right on groups 0-2, no border on group 3 */}
             <Text style={g < 3 ? styles.clHeaderCheckLast : styles.clHeaderCheckLastNoRight}>N/A</Text>
@@ -203,7 +203,7 @@ export const ChecklistTable = ({ checklist, checklistRemarks }) => {
       {remarksText ? (
         <View style={styles.remarksRow}>
           <Text style={{ color: ORANGE, fontFamily: "Helvetica-Bold" }}>Remarks: </Text>
-          <Text style={{ color: BLUE, fontFamily: "Helvetica-Bold" }}>{remarksText}</Text>
+          <Text style={{ color: BLUE }}>{remarksText}</Text>
         </View>
       ) : null}
     </View>
