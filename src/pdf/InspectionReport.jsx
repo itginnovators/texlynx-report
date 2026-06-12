@@ -72,7 +72,7 @@ const Page2 = ({ data, result }) => {
                 const isLast = ci === QTY_COLS.length - 1;
                 const color = col.key === "QtyDifference" ? diffColor : BLACK;
                 return (
-                  <Text key={ci} style={[isLast ? styles.qtyCellLast : styles.qtyCell, { width: col.w, color }]}>
+                  <Text key={ci} style={[isLast ? styles.qtyCellLast : styles.qtyCell, { width: col.w, color: BLUE }]}>
                     {String(val)}
                   </Text>
                 );
@@ -93,12 +93,12 @@ const AQL_COLS = [
   { key: "desc", label: "Description", w: "20%" },
   { key: "Size", label: "Size", w: "8%" },
   { key: "SampleSize", label: "Sample Size", w: "7%" },
-  { key: "critAllowed", label: "Critical Defect\nAllowed", w: "9%" },
-  { key: "MajorAllowed", label: "Major Defect\nAllowed", w: "9%" },
-  { key: "MinorAllowed", label: "Minor Defect\nAllowed", w: "9%" },
-  { key: "CriticalTotal", label: "Critical Defect\nFound", w: "9%" },
-  { key: "MajorTotal", label: "Major Defect\nFound", w: "9%" },
-  { key: "MinorTotal", label: "Minor Defect\nFound", w: "9%" },
+  { key: "critAllowed", label: "Critical Defect Allowed", w: "9%" },
+  { key: "MajorAllowed", label: "Major Defect Allowed", w: "9%" },
+  { key: "MinorAllowed", label: "Minor Defect Allowed", w: "9%" },
+  { key: "CriticalTotal", label: "Critical Defect Found", w: "9%" },
+  { key: "MajorTotal", label: "Major Defect Found", w: "9%" },
+  { key: "MinorTotal", label: "Minor Defect Found", w: "9%" },
   { key: "Result", label: "Result", w: "9%" },
 ];
 
@@ -127,7 +127,7 @@ const Page3 = ({ data, result }) => {
         {rows.map((row, ri) => {
           const isPass = row.Result === 1;
           return (
-            <View key={ri} wrap={false} style={[styles.aqlDataRow, ri === rows.length - 1 && styles.aqlDataRowLast]}>
+            <View key={ri} wrap={false} style={[styles.aqlDataRow, ri === rows.length - 1 && styles.aqlDataRowLast, { color: BLUE }]}>
               <Text style={[styles.aqlCell, { width: "20%" }]}>{row.Product || row.Color || "—"}</Text>
               <Text style={[styles.aqlCell, { width: "8%" }]}>{row.Size || "—"}</Text>
               <Text style={[styles.aqlCell, { width: "7%", textAlign: "center" }]}>{row.SampleSize}</Text>
@@ -201,7 +201,7 @@ const Page4 = ({ data, result }) => {
               <View style={[{ flexDirection: "row" }, bB]}>
 
                 {/* LEFT PANEL */}
-                <View style={[{ width: "45%", flexDirection: "row", backgroundColor: LIGHT_GRAY }, bR]}>
+                <View style={[{ width: "45%", flexDirection: "row" }, bR]}>
                   <View style={[{ width: "15.56%", alignItems: "center", justifyContent: "center" }, bR]}>
                     <Text style={[f8, blk, ctr]}>ERROR{"\n"}#</Text>
                   </View>
@@ -212,15 +212,15 @@ const Page4 = ({ data, result }) => {
 
                 {/* RIGHT PANEL: 4 stacked meta rows */}
                 <View style={{ flex: 1, flexDirection: "column" }}>
-                  <View style={[{ flexDirection: "row", backgroundColor: LIGHT_GRAY }, bB]}>
+                  <View style={[{ flexDirection: "row", }, bB]}>
                     <Text style={[{ width: "25.45%" }, pad, f8, bR, blk]}>DESIGN / COLOR</Text>
                     <Text style={[{ flex: 1 }, pad, f9, { color: BLUE, textAlign: "center" }]}>{w.Color}</Text>
                   </View>
-                  <View style={[{ flexDirection: "row", backgroundColor: LIGHT_GRAY }, bB]}>
+                  <View style={[{ flexDirection: "row", }, bB]}>
                     <Text style={[{ width: "25.45%" }, pad, f8, bR, blk]}>SIZE/STYLE</Text>
                     <Text style={[{ flex: 1 }, pad, f9, { color: BLUE, textAlign: "center" }]}>{w.Size}</Text>
                   </View>
-                  <View style={[{ flexDirection: "row", backgroundColor: LIGHT_GRAY }, bB]}>
+                  <View style={[{ flexDirection: "row", }, bB]}>
                     <Text style={[{ width: "25.45%" }, pad, f8, bR, blk]}>SAMPLE SIZE</Text>
                     <Text style={[{ flex: 1 }, pad, f9, { color: BLUE, textAlign: "center" }]}>{w.SampleSize}</Text>
                   </View>
@@ -238,29 +238,29 @@ const Page4 = ({ data, result }) => {
                 <View key={ei} style={[{ flexDirection: "row", flex: 1 }, bB]}>
                   {/* Error # */}
                   <View style={[{ width: "7%", justifyContent: "center", alignItems: "center" }, bR]}>
-                    <Text style={[f9, { color: BLUE, fontFamily: "Helvetica-Bold", textAlign: "center" }]}>{err.n}</Text>
+                    <Text style={[f9, { color: BLUE, textAlign: "center" }]}>{err.n}</Text>
                   </View>
                   {/* Error description */}
-                  <View style={[{ width: "38%", justifyContent: "center", paddingHorizontal: 5, paddingVertical: 3 }, bR]}>
-                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold" }]}>{err.desc}</Text>
+                  <View style={[{ width: "38%", justifyContent: "center", paddingHorizontal: 5, paddingVertical: 3 }]}>
+                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK }]}>{err.desc}</Text>
                   </View>
                   {/* Empty defect category spacer */}
-                  <View style={[{ width: "14%" }, bR]} />
+                  <View style={[{ width: "14%", }, bR]} />
                   {/* Critical */}
                   <View style={[{ flex: 1, justifyContent: "center", alignItems: "center" }, bR]}>
-                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold", textAlign: "center" }]}>
+                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, textAlign: "center" }]}>
                       {err.hasData ? err.critical : ""}
                     </Text>
                   </View>
                   {/* Major */}
                   <View style={[{ flex: 1, justifyContent: "center", alignItems: "center" }, bR]}>
-                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold", textAlign: "center" }]}>
+                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, textAlign: "center" }]}>
                       {err.hasData ? err.major : ""}
                     </Text>
                   </View>
                   {/* Minor */}
                   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, fontFamily: "Helvetica-Bold", textAlign: "center" }]}>
+                    <Text style={[f9, { color: err.hasData ? BLUE : BLACK, textAlign: "center" }]}>
                       {err.hasData ? err.minor : ""}
                     </Text>
                   </View>
@@ -285,7 +285,7 @@ const Page4 = ({ data, result }) => {
 
               {/* ── RESULT row ── */}
               <View style={{ flexDirection: "row", minHeight: 18 }}>
-                <Text style={[{ flex: 1 }, pad, f9, blk, ctr]}>RESULT</Text>
+                <Text style={[{ width: "59%" }, pad, f9, blk, ctr, { textAlign: "right" }]}>RESULT</Text>
                 <Text style={[{ flex: 1 }, pad, f9, blk, ctr, { color: isPass ? GREEN : RED }]}>
                   {isPass ? "PASS" : "FAIL"}
                 </Text>
@@ -340,7 +340,7 @@ const Page5 = ({ data, result }) => {
           i < options.length - 1 && bR,
         ]}>
           <CB checked={opt.checked} />
-          <Text style={[f85, { marginLeft: 5 }, opt.checked && { color: BLUE, fontFamily: "Helvetica-Bold" }]}>
+          <Text style={[f85, { marginLeft: 5 }, opt.checked && { color: BLUE }]}>
             {opt.label}
             {opt.checked && opt.extra ? ` (${opt.extra})` : ""}
           </Text>
@@ -397,7 +397,7 @@ const Page5 = ({ data, result }) => {
           <Text style={styles.simpleHeaderCellLast}>{selectedColLabel}</Text>
         </View>
         {cartonSel.map((row, ri) => (
-          <View key={ri} style={[styles.simpleDataRow, ri === cartonSel.length - 1 && styles.simpleDataRowLast]}>
+          <View key={ri} style={[styles.simpleDataRow, ri === cartonSel.length - 1 && styles.simpleDataRowLast, { color: BLUE }]}>
             <Text style={styles.simpleCell}>{row.Article}</Text>
             <Text style={styles.simpleCell}>{row.Size}</Text>
             <Text style={styles.simpleCellLast}>{row.Cartons}</Text>
@@ -414,7 +414,7 @@ const Page5 = ({ data, result }) => {
           ))}
         </View>
         {cartonDim.map((row, ri) => (
-          <View key={ri} style={[styles.simpleDataRow, ri === cartonDim.length - 1 && styles.simpleDataRowLast]} >
+          <View key={ri} style={[styles.simpleDataRow, ri === cartonDim.length - 1 && styles.simpleDataRowLast, { color: BLUE }]} >
             {[row.Article, row.SKU, row.BarcodeOrUPC, row.CartonDimension, row.ObservedCartonDimension, row.PackedProductDimension, row.CartonPLY, row.RetailPrice, row.Retailer].map((v, ci, arr) => (
               <Text key={ci} style={ci === arr.length - 1 ? styles.simpleCellLast : styles.simpleCell} >{v ?? "—"}</Text>
             ))}
@@ -451,7 +451,7 @@ const Page6 = ({ data, result }) => {
             src={measPhoto.photoUrl}
             style={{ maxWidth: "100%", maxHeight: 360, objectFit: "contain" }}
           />
-          <Text style={{ fontSize: 8, color: BLUE, marginTop: 4, fontFamily: "Helvetica-Bold" }}>Measurements Sheet</Text>
+          <Text style={{ fontSize: 8, color: BLUE, marginTop: 4 }}>Measurements Sheet</Text>
         </View>
       )}
     </Page>
@@ -506,7 +506,7 @@ const Page7 = ({ data, result }) => {
                     src={photo.photoUrl}
                     style={{ width: "100%", height: 165, objectFit: "cover" }}
                   />
-                  <Text style={{ fontSize: 7.5, color: BLUE, paddingVertical: 3, textAlign: "center", fontFamily: "Helvetica-Bold" }}>
+                  <Text style={{ fontSize: 7.5, color: BLUE, paddingVertical: 3, textAlign: "center" }}>
                     {`Picture ${globalIndex}`}
                   </Text>
                 </View>
@@ -581,6 +581,18 @@ const Page7b = ({ data, result }) => {
 const PHOTOS_PER_ROW = 3;
 const ROWS_PER_PAGE = 2;
 const PHOTOS_PER_PAGE = PHOTOS_PER_ROW * ROWS_PER_PAGE;
+const PHOTO_ORDER = [
+  "SHADE COMPARISON",
+  "METAL DETECTION TEST",
+  "GENERAL PRESENTATION",
+  "OTHERS",
+  "Defect",
+];
+
+// Maps internal PhotoType keys → display label shown in SectionHeader
+const PHOTO_TITLE_MAP = {
+  "Defect": "DEFECT PHOTOS",
+};
 
 const PhotoPage = ({ title, photos, result }) => {
   // Split into pages of 6
@@ -610,7 +622,7 @@ const PhotoPage = ({ title, photos, result }) => {
                   src={photo.photoUrl}
                   style={{ width: "100%", height: 160, objectFit: "cover" }}
                 />
-                 <Text style={{ fontSize: 7.5, color: photo.PhotoType === "Defect" ? RED : BLUE, paddingVertical: 3, textAlign: "center", fontFamily: 'Helvetica-Bold' }}>
+                <Text style={{ fontSize: 7.5, color: photo.PhotoType === "Defect" ? RED : BLUE, paddingVertical: 3, textAlign: "center" }}>
                   {photo.PhotoName}
                 </Text>
               </View>
@@ -627,14 +639,7 @@ const PhotoPage = ({ title, photos, result }) => {
 };
 
 // Photo type order (Defect first, then specific types, then OTHERS; KEY OBSERVATION excluded)
-const PHOTO_ORDER = [
- 
-  "SHADE COMPARISON",
-  "METAL DETECTION TEST",
-  "GENERAL PRESENTATION",
-  "OTHERS",
-   "Defect",
-];
+
 
 // ── MAIN DOCUMENT ─────────────────────────────────────────────
 const InspectionReport = ({ data }) => {
@@ -664,7 +669,8 @@ const InspectionReport = ({ data }) => {
       {PHOTO_ORDER.map(type => {
         const photos = photoGroups[type];
         if (!photos || photos.length === 0) return null;
-        return <PhotoPage key={type} title={type} photos={photos} result={result} />
+        const title = PHOTO_TITLE_MAP[type] || type;
+        return <PhotoPage key={type} title={title} photos={photos} result={result} />
 
       })}
       {/* Any remaining types not in PHOTO_ORDER (except excluded) */}
