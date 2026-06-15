@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   qtyDataRowLast: { borderBottomWidth: 0 },
   qtyCell: {
     paddingHorizontal: 4, paddingVertical: 4, justifyContent: "center",
-    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 9,
+    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 7.5,
   },
   qtyCellLast: { paddingHorizontal: 4, paddingVertical: 4, justifyContent: "center", fontSize: 9 },
   qtyHeaderCell: {
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   aqlDataRowLast: { borderBottomWidth: 0 },
   aqlCell: {
     paddingHorizontal: 4, paddingVertical: 4, justifyContent: "center",
-    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 9,
+    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 7.5,
   },
   aqlCellLast: { paddingHorizontal: 4, paddingVertical: 4, justifyContent: "center", fontSize: 9 },
   aqlHeaderCell: {
@@ -409,12 +409,12 @@ const styles = StyleSheet.create({
   simpleDataRowLast: { borderBottomWidth: 0 },
   simpleCell: {
     flex: 1, paddingHorizontal: 5, paddingVertical: 4, justifyContent: "center",
-    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 9.5,
+    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 7.5,
   },
   simpleCellLast: { flex: 1, paddingHorizontal: 5, paddingVertical: 4, justifyContent: "center", fontSize: 9.5 },
   simpleHeaderCell: {
     flex: 1, paddingHorizontal: 5, paddingVertical: 4, fontFamily: "Helvetica-Bold",
-    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 9.5,
+    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 7.5,
   },
   simpleHeaderCellLast: { flex: 1, paddingHorizontal: 5, paddingVertical: 4, fontFamily: "Helvetica-Bold", fontSize: 9.5 },
 
