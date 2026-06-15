@@ -591,7 +591,7 @@ const PHOTO_ORDER = [
 
 // Maps internal PhotoType keys → display label shown in SectionHeader
 const PHOTO_TITLE_MAP = {
-  "Defect": "DEFECT PHOTOS",
+  "Defect": "DEFECT PHOTO",
 };
 
 const PhotoPage = ({ title, photos, result }) => {
