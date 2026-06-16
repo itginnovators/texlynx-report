@@ -33,15 +33,15 @@ const QTY_COLS = [
   { key: "Color", label: "Color", w: "14%" },
   { key: "Size", label: "Size", w: "7%" },
   { key: "Description", label: "Description", w: "10%" },
-  { key: "QtyPO", label: "Qty PO", w: "6%" },
-  { key: "QtyPList", label: "Qty P.List", w: "7%" },
+  { key: "QtyPO", label: "Qty As\nPer PO", w: "6%" },
+  { key: "QtyPList", label: "Qty As\nPer P.List", w: "7%" },
   { key: "QtyDifference", label: "+/- PO", w: "6%" },
-  { key: "PcsPerCarton", label: "Pcs/Sets Per Carton", w: "7%" },
-  { key: "TotalCartons", label: "Total Cartons", w: "7%" },
-  { key: "PscWeight", label: "Pc/Set Weight", w: "6%" },
-  { key: "CartonWeight", label: "Carton Weight", w: "6%" },
-  { key: "SelectedCartons", label: "Selected Cartons", w: "6%" },
-  { key: "SampleSize", label: "Sample Size", w: "6%" },
+  { key: "PcsPerCarton", label: "Pcs/Sets\nPer Carton", w: "7%" },
+  { key: "TotalCartons", label: "Total\nCartons", w: "7%" },
+  { key: "PscWeight", label: "Pc/Set\nWeight", w: "6%" },
+  { key: "CartonWeight", label: "Carton\nWeight", w: "6%" },
+  { key: "SelectedCartons", label: "Selected\nCartons", w: "6%" },
+  { key: "SampleSize", label: "Sample\nSize", w: "6%" },
 ];
 
 const Page2 = ({ data, result }) => {
@@ -93,12 +93,12 @@ const AQL_COLS = [
   { key: "desc", label: "Description", w: "20%" },
   { key: "Size", label: "Size", w: "8%" },
   { key: "SampleSize", label: "Sample Size", w: "7%" },
-  { key: "critAllowed", label: "Critical Defect Allowed", w: "9%" },
-  { key: "MajorAllowed", label: "Major Defect Allowed", w: "9%" },
-  { key: "MinorAllowed", label: "Minor Defect Allowed", w: "9%" },
-  { key: "CriticalTotal", label: "Critical Defect Found", w: "9%" },
-  { key: "MajorTotal", label: "Major Defect Found", w: "9%" },
-  { key: "MinorTotal", label: "Minor Defect Found", w: "9%" },
+  { key: "critAllowed", label: "Critical Defects\nAllowed", w: "9%" },
+  { key: "MajorAllowed", label: "Major Defects\nAllowed", w: "9%" },
+  { key: "MinorAllowed", label: "Minor Defects\nAllowed", w: "9%" },
+  { key: "CriticalTotal", label: "Critical Defects\nFound", w: "9%" },
+  { key: "MajorTotal", label: "Major Defects\nFound", w: "9%" },
+  { key: "MinorTotal", label: "Minor Defects\nFound", w: "9%" },
   { key: "Result", label: "Result", w: "9%" },
 ];
 
@@ -534,16 +534,24 @@ const Page7b = ({ data, result }) => {
       <Text style={[styles.obsTitle, { color: 'white' }]}>OBSERVATION REMARKS:</Text>
       <View style={styles.obsBox}>
         {obsRemarks.length > 0 ? (
-          obsRemarks.map((item, i) => (
-            <View key={i} style={{ flexDirection: "row", marginBottom: 4 }}>
-              {obsRemarks.length > 1 && (
-                <Text style={{ fontFamily: "Helvetica-Bold", fontSize: 8.5, marginRight: 4, color: BLACK }}>
-                  {i + 1}.
-                </Text>
-              )}
-              <Text style={styles.obsText}>{item.Remarks || ""}</Text>
-            </View>
-          ))
+          obsRemarks.map((item, i) => {
+            // Split remark text by numbered sub-points like "1. ... 2. ..."
+            const raw = item.Remarks || "";
+            const parts = raw
+              .split(/(?=\s*\d+\.\s)/)
+              .map(s => s.trim())
+              .filter(Boolean);
+            const lines = parts.length > 1 ? parts : [raw];
+            return (
+              <View key={i} style={{ marginBottom: 6 }}>
+                {lines.map((line, li) => (
+                  <View key={li} style={{ flexDirection: "row", marginBottom: 2 }}>
+                    <Text style={styles.obsText}>{line}</Text>
+                  </View>
+                ))}
+              </View>
+            );
+          })
         ) : null}
       </View>
       <Text style={{ fontFamily: "Helvetica-Bold", fontSize: 9, marginBottom: 4, marginTop: 6, borderWidth: 0.5, borderColor: BLACK, padding: 5, }}>1-B. PRODUCT CONFORMITY:</Text>
@@ -591,7 +599,11 @@ const PHOTO_ORDER = [
 
 // Maps internal PhotoType keys → display label shown in SectionHeader
 const PHOTO_TITLE_MAP = {
-  "Defect": "DEFECT PHOTO",
+  "SHADE COMPARISON": "SHADE COMPARISON PHOTOS",
+  "METAL DETECTION TEST": "METAL DETECTION TEST",
+  "GENERAL PRESENTATION": "GENERAL PRESENTATION PHOTOS",
+  "OTHERS": "OTHERS",
+  "Defect": "DEFECTS PHOTOS",
 };
 
 const PhotoPage = ({ title, photos, result }) => {
