@@ -189,9 +189,9 @@ const Page4 = ({ data, result }) => {
           <Page key={wi} size="A4" style={[styles.page, { display: "flex", flexDirection: "column" }]} orientation="landscape">
             <PageHeader result={result} />
             {wi === 0 && (
-              <View style={{ marginTop: -20, color: 'white' }}>
-                <SectionHeader title="1-C. AVERAGE WORKMANSHIP AND FINISH CONTROL RECORD:" />
-              </View>
+              <Text style={{ fontFamily: "Helvetica-Bold", fontSize: 9, marginBottom: 4, marginTop: 6, borderWidth: 0.5, borderColor: BLACK, padding: 5 }}>
+                1-C. AVERAGE WORKMANSHIP AND FINISH CONTROL RECORD:
+              </Text>
             )}
 
             {/* wcrBlock fills remaining page height */}
