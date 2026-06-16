@@ -225,7 +225,7 @@ const Page4 = ({ data, result }) => {
                     <Text style={[{ flex: 1 }, pad, f9, { color: BLUE, textAlign: "center" }]}>{w.SampleSize}</Text>
                   </View>
                   <View style={{ flexDirection: "row" }}>
-                    <Text style={[{ width: "25.45%" }, pad, f8, bR, blk]}>DEFECT CATEGORY</Text>
+                    <Text style={[{ width: "25.45%" }, pad, f8, bR, blk]}>DEFECTS CATEGORY</Text>
                     <Text style={[{ flex: 1 }, pad, f8, bR, blk, ctr]}>CRITICAL</Text>
                     <Text style={[{ flex: 1 }, pad, f8, bR, blk, ctr]}>MAJOR</Text>
                     <Text style={[{ flex: 1 }, pad, f8, blk, ctr]}>MINOR</Text>
@@ -531,7 +531,7 @@ const Page7b = ({ data, result }) => {
     <Page size="A4" style={styles.page} orientation="landscape">
       <PageHeader result={result} />
       {/* Observation Remarks box */}
-      <Text style={[styles.obsTitle, { color: 'white' }]}>OBSERVATION REMARKS:</Text>
+      <Text style={[styles.obsTitle, { color: 'white' }]}>OBSERVATIONS / REMARKS:</Text>
       <View style={styles.obsBox}>
         {obsRemarks.length > 0 ? (
           obsRemarks.map((item, i) => {
