@@ -409,14 +409,14 @@ const styles = StyleSheet.create({
   simpleDataRowLast: { borderBottomWidth: 0 },
   simpleCell: {
     flex: 1, paddingHorizontal: 5, paddingVertical: 4, justifyContent: "center",
-    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 7.5,
+    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 8.5,
   },
-  simpleCellLast: { flex: 1, paddingHorizontal: 5, paddingVertical: 4, justifyContent: "center", fontSize: 9.5 },
+  simpleCellLast: { flex: 1, paddingHorizontal: 5, paddingVertical: 4, justifyContent: "center", fontSize: 8.5 },
   simpleHeaderCell: {
     flex: 1, paddingHorizontal: 5, paddingVertical: 4, fontFamily: "Helvetica-Bold",
-    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 7.5,
+    borderRightWidth: 0.5, borderRightColor: BLACK, fontSize: 8.5,
   },
-  simpleHeaderCellLast: { flex: 1, paddingHorizontal: 5, paddingVertical: 4, fontFamily: "Helvetica-Bold", fontSize: 9.5 },
+  simpleHeaderCellLast: { flex: 1, paddingHorizontal: 5, paddingVertical: 4, fontFamily: "Helvetica-Bold", fontSize: 8.5 },
 
   // ── MEASUREMENT ──
   measCheckRow: { flexDirection: "row", alignItems: "center", marginBottom: 5, flexWrap: "wrap" },
